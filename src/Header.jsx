@@ -1,7 +1,9 @@
+import { Link, NavLink } from "react-router-dom";
+
 export function Header() {
   return (
     <nav>
-      <a href="#shoes-index">Home</a> | <a href="#shoes-new">Add Shoes</a>
+      <NavLink to="/">Home</NavLink> | <NavLink to="/shoes/new">Add Shoe</NavLink>
     </nav>
   );
 }

@@ -2,6 +2,7 @@ export function ShoesShow(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
+    props.onUpdateShoe(params);
     event.target.reset();
   };
 

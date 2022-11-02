@@ -26,13 +26,30 @@ export function Home() {
     setIsShoeVisible(false);
   };
 
+  const handleUpdateShoe = (params) => {
+    axios.patch("http://localhost:3000/shoes/" + currentShoe.id + ".json", params).then((response) => {
+      console.log(response.data);
+      const updatedShoe = response.data;
+      setCurrentShoe(updatedShoe);
+      setShoes(
+        shoes.map((shoe) => {
+          if (shoe.id === updatedShoe.id) {
+            return updatedShoe;
+          } else {
+            return shoe;
+          }
+        })
+      );
+    });
+  };
+
   useEffect(handleIndexShoes, []);
 
   return (
     <div>
       <ShoesIndex shoes={shoes} onSelectShoe={handleShowShoe} />
       <Modal show={isShoeVisible} onClose={handleHideShoe}>
-        <ShoesShow shoe={currentShoe} />
+        <ShoesShow shoe={currentShoe} onUpdateShoe={handleUpdateShoe} />
       </Modal>
     </div>
   );

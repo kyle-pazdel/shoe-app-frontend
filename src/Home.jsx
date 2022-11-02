@@ -7,6 +7,7 @@ export function Home() {
 
   const handleIndexShoes = () => {
     axios.get("http://localhost:3000/shoes.json").then((response) => {
+      console.log(response.data);
       setShoes(response.data);
     });
   };

@@ -1,7 +1,7 @@
 export function Header() {
   return (
-    <div>
-      <p>&copy; Copyright 2022</p>;
-    </div>
+    <nav>
+      <a href="#shoes-index">Home</a> | <a href="#shoes-new">Add Shoes</a>
+    </nav>
   );
 }

@@ -6,6 +6,10 @@ export function ShoesShow(props) {
     event.target.reset();
   };
 
+  const handleClick = () => {
+    props.onDestroyShoe(props.shoe);
+  };
+
   return (
     <div>
       <div>
@@ -41,6 +45,8 @@ export function ShoesShow(props) {
           <input type="submit"></input>
         </div>
       </form>
+
+      <button onClick={handleClick}>Delete Shoe</button>
     </div>
   );
 }

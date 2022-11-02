@@ -43,13 +43,20 @@ export function Home() {
     });
   };
 
+  const handleDestroyShoe = (shoe) => {
+    axios.delete("http://localhost:3000/shoes/" + shoe.id + ".json").then((response) => {
+      setShoes(shoes.filter((s) => s.id !== shoe.id));
+      handleHideShoe();
+    });
+  };
+
   useEffect(handleIndexShoes, []);
 
   return (
     <div>
       <ShoesIndex shoes={shoes} onSelectShoe={handleShowShoe} />
       <Modal show={isShoeVisible} onClose={handleHideShoe}>
-        <ShoesShow shoe={currentShoe} onUpdateShoe={handleUpdateShoe} />
+        <ShoesShow shoe={currentShoe} onUpdateShoe={handleUpdateShoe} onDestroyShoe={handleDestroyShoe} />
       </Modal>
     </div>
   );

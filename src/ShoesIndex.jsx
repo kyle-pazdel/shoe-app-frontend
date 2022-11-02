@@ -8,7 +8,7 @@ export function ShoesIndex(props) {
           <p>{shoe.color}</p>
           <p>{shoe.description}</p>
           <p>{shoe.style}</p>
-          <button onClick={props.onSelectShoe}>More Info</button>
+          <button onClick={() => props.onSelectShoe(shoe)}>More Info</button>
         </div>
       ))}
     </div>

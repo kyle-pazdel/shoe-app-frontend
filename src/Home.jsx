@@ -17,6 +17,7 @@ export function Home() {
   };
 
   const handleShowShoe = (shoe) => {
+    console.log(shoe);
     setIsShoeVisible(true);
     setCurrentShoe(shoe);
   };

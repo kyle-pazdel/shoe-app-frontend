@@ -5,3 +5,7 @@ html {
 img {
   width: 50%;
 }
+
+#map {
+  height: 400px;
+}

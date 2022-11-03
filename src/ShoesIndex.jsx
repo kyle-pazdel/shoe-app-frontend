@@ -1,7 +1,9 @@
 export function ShoesIndex(props) {
+  const shoesAscending = [...props.shoes].sort((a, b) => a.id - b.id);
+
   return (
     <div>
-      {props.shoes.map((shoe) => (
+      {shoesAscending.map((shoe) => (
         <div key={shoe.id}>
           <img src={shoe.image} alt={shoe.description} />
           <h2>{shoe.name}</h2>

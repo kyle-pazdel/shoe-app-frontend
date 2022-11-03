@@ -4,6 +4,7 @@ import { Home } from "./Home";
 import { ShoesNew } from "./ShoesNew";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { MapPage } from "./MapPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shoes/new" element={<ShoesNew />} />
+        <Route path="/map" element={<MapPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

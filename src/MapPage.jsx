@@ -6,23 +6,25 @@ export function MapPage() {
   const SearchField = () => {
     const provider = new OpenStreetMapProvider();
 
-    // @ts-ignore
-    const searchControl = new GeoSearchControl({
-      provider: provider,
-    });
-
     const map = useMap();
     useEffect(() => {
       map.addControl(searchControl);
       return () => map.removeControl(searchControl);
     }, []);
+
+    // @ts-ignore
+    const searchControl = new GeoSearchControl({
+      provider: provider,
+      // style: "bar",
+      autoComplete: true,
+    });
   };
   return (
     <div>
       {/* <form>
         <input type="text">Search</input>
       </form> */}
-      <MapContainer id="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+      <MapContainer id="map" center={[33.824, -116.55]} zoom={13} scrollWheelZoom={false}>
         {<SearchField />}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

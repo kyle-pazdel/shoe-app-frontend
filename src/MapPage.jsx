@@ -1,17 +1,39 @@
-import { MapContainer, TileLayer, useMap, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, useMap, Popup, Marker } from "react-leaflet";
+import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
+import { useEffect } from "react";
 
 export function MapPage() {
+  const SearchField = () => {
+    const provider = new OpenStreetMapProvider();
+
+    // @ts-ignore
+    const searchControl = new GeoSearchControl({
+      provider: provider,
+    });
+
+    const map = useMap();
+    useEffect(() => {
+      map.addControl(searchControl);
+      return () => map.removeControl(searchControl);
+    }, []);
+  };
   return (
-    <MapContainer id="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {/* <Marker position={[51.505, -0.09]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker> */}
-    </MapContainer>
+    <div>
+      {/* <form>
+        <input type="text">Search</input>
+      </form> */}
+      <MapContainer id="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+        {<SearchField />}
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[51.505, -0.09]}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
   );
 }
